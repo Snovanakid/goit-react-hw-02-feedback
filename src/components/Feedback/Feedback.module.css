@@ -1,0 +1,19 @@
+.buttonWrap{
+    display: flex;
+    gap: 20px;
+}
+
+.btn{
+    background-color: #fafafa;
+    border: 1px solid #212121;
+    border-radius: 4px;
+    padding: 5px 10px;
+}
+.btn:hover,
+.btn:focus{
+    background-color: #e6e6e6;
+}
+.btn:active{
+    background-color: #ca2323;
+    color: #fafafa;
+}
