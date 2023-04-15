@@ -38,11 +38,11 @@ export class App extends Component {
         
       <Section title={'Statistics'}>
           <Statistics
-            stat={this.state}
-            total={this.countTotalFeedback()}
-            positiveFeedbackPercentage={this.countPositiveFeedbackPercentage()}
+              stat={this.state}
+              total={this.countTotalFeedback()}
+              positiveFeedbackPercentage={this.countPositiveFeedbackPercentage()}
           />
-        </Section>
+      </Section>
       </>
     );
   }
