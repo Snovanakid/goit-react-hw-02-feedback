@@ -1,13 +1,12 @@
 import s from './Statistics.module.css';
-import Notification from '../Notification/Notification';
+// import Notification from '../Notification/Notification';
 import PropTypes from 'prop-types';
 
 const Statistics = ({stat, total, positiveFeedbackPercentage}) => {
     const { good, neutral, bad } = stat
     return (
         <div>
-            {good || neutral || bad ? (
-                <>
+            
                     <p>
                         Good:
                         <span className={s.statNumber}>{good}</span>
@@ -30,10 +29,7 @@ const Statistics = ({stat, total, positiveFeedbackPercentage}) => {
                             {positiveFeedbackPercentage}%
                         </span>
                     </p>
-            </>
-            ) : (
-                    <Notification message={"No feedback given"}/>
-                )}
+            
         </div>
     );
 }

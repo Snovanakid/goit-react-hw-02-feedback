@@ -2,6 +2,7 @@ import { Component } from 'react';
 import Feedback from './Feedback/Feedback';
 import Section from './Section/Section';
 import Statistics from './Statistics/Statistics';
+import Notification from './Notification/Notification';
 
 export class App extends Component {
   state = {
@@ -29,25 +30,30 @@ export class App extends Component {
     return result;
   };
 
-render() {
-  const totalFeedback = this.countTotalFeedback();
-  const positiveFeedbackPercentage = this.countPositiveFeedbackPercentage();
+  render() {
+    
+    const totalFeedback = this.countTotalFeedback();
+    const positiveFeedbackPercentage = this.countPositiveFeedbackPercentage();
+    const isFeedbackGiven = totalFeedback > 0;
 
-  return (
-    <>
-      <Section title={'Please leave feedback'}>
-        <Feedback onAddFeedback={this.onAddFeedback} />
-      </Section>
-      {totalFeedback > 0 && (
-        <Section title={'Statistics'}>
-          <Statistics
-            stat={this.state}
-            total={totalFeedback}
-            positiveFeedbackPercentage={positiveFeedbackPercentage}
-          />
+    return (
+      <>
+        <Section title={'Please leave feedback'}>
+          <Feedback onAddFeedback={this.onAddFeedback} state={this.state}/>
         </Section>
-      )}
-    </>
-  );
-}
+
+        <Section title={'Statistics'}>
+          {isFeedbackGiven ? (
+            <Statistics
+              stat={this.state}
+              total={totalFeedback}
+              positiveFeedbackPercentage={positiveFeedbackPercentage}
+            />
+          ) : (
+            <Notification message={'No feedback given'} />
+          )}
+        </Section>
+      </>
+    );
+  }
 }
