@@ -29,21 +29,25 @@ export class App extends Component {
     return result;
   };
 
-  render() {
-    return (
-      <>
-        <Section title={'Please leave feedback'}>
-          <Feedback onAddFeedback={this.onAddFeedback} />
-        </Section>
-        
-      <Section title={'Statistics'}>
-          <Statistics
-              stat={this.state}
-              total={this.countTotalFeedback()}
-              positiveFeedbackPercentage={this.countPositiveFeedbackPercentage()}
-          />
+render() {
+  const totalFeedback = this.countTotalFeedback();
+  const positiveFeedbackPercentage = this.countPositiveFeedbackPercentage();
+
+  return (
+    <>
+      <Section title={'Please leave feedback'}>
+        <Feedback onAddFeedback={this.onAddFeedback} />
       </Section>
-      </>
-    );
-  }
+      {totalFeedback > 0 && (
+        <Section title={'Statistics'}>
+          <Statistics
+            stat={this.state}
+            total={totalFeedback}
+            positiveFeedbackPercentage={positiveFeedbackPercentage}
+          />
+        </Section>
+      )}
+    </>
+  );
+}
 }
